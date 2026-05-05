@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="c"></canvas>
+
+<script>
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+const windowInnerWidth = document.documentElement.clientWidth;
+const windowInnerHeight = document.documentElement.clientHeight;
+
+canvas.width = windowInnerWidth;
+canvas.height = windowInnerHeight;
+
+let t = 0;
+
+function animate() {
+    t += 0.05;
+
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, windowInnerWidth, windowInnerHeight);
+
+    ctx.fillStyle = "red";
+    ctx.beginPath();
+    ctx.arc(
+        400 + Math.sin(t) * 200,
+        300,
+        50,
+        0,
+        Math.PI * 2
+    );
+    ctx.fill();
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>
