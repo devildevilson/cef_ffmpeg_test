@@ -41,7 +41,7 @@ void APIENTRY glDebugCallback(
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
   if (msg == WM_CLOSE) {
-    common::info("Got msg WM_CLOSE, g_closing = {}, g_exit_not_ready = {}", common::g_closing.load(), common::g_exit_not_ready.load());
+    //common::info("Got msg WM_CLOSE, g_closing = {}, g_exit_not_ready = {}", common::g_closing.load(), common::g_exit_not_ready.load());
     common::g_closing = true;
     if (common::g_exit_not_ready.load() != 0) {
       // нужно закрыть все браузеры
@@ -52,7 +52,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
   }
 
   if (msg == WM_DESTROY) {
-    common::info("Got msg WM_DESTROY, g_closing = {}, g_exit_not_ready = {}", common::g_closing.load(), common::g_exit_not_ready.load());
+    //common::info("Got msg WM_DESTROY, g_closing = {}, g_exit_not_ready = {}", common::g_closing.load(), common::g_exit_not_ready.load());
     PostQuitMessage(0);
     return 0;
   }
@@ -161,15 +161,6 @@ struct native_window_t {
   // добавим коллбек? имеет смысл
   template <typename F, typename... Args>
   int32_t update(const size_t time, F f, Args&&... args) {
-    /*while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
-      if (msg.message == WM_QUIT) { 
-        common::info("msg.message == WM_QUIT");
-        return 1;
-      }
-
-      TranslateMessage(&msg);
-      DispatchMessage(&msg);
-    }*/
 
     // render
     std::invoke(f, std::forward<Args>(args)...);

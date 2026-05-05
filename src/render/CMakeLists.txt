@@ -16,12 +16,15 @@ endif()
 
 set(SRC_LIST 
   src/resource_manager.cpp
- "src/system.cpp" "src/window.cpp")
+  src/system.cpp 
+  src/window.cpp
+)
 
 set(HDR_LIST 
   include/render/resource_manager.h
   include/render/system.h
- "include/render/window.h")
+  include/render/window.h
+)
 
 add_library(${PROJECT_NAME} ${SRC_LIST} ${HDR_LIST})
 target_include_directories(${PROJECT_NAME} INTERFACE "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>")

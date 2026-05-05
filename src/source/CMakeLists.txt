@@ -75,11 +75,13 @@ endif()
 
 set(SRC_LIST 
   src/ffmpeg.cpp
- "src/cef.cpp")
+  src/cef.cpp
+)
 
 set(HDR_LIST 
   include/source/ffmpeg.h
- "include/source/cef.h")
+  include/source/cef.h
+)
 
 message(STATUS "CEF_STANDARD_LIBS content: ${CEF_STANDARD_LIBS}")
 message(STATUS "CEF_INCLUDE_PATH content: ${CEF_INCLUDE_PATH}")

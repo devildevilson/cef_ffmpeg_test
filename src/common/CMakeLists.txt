@@ -26,15 +26,16 @@ target_compile_definitions(cef_ffmpeg_test_options INTERFACE
 add_library(cef_ffmpeg_test::options ALIAS cef_ffmpeg_test_options)
 
 set(SRC_LIST 
-
- "src/settings.cpp" "src/utils.cpp")
+  src/settings.cpp 
+  src/utils.cpp
+)
 
 set(HDR_LIST 
   include/common/common.h
   include/common/settings.h
   include/common/source_interface.h
   include/common/utils.h
- "include/common/app.h")
+)
 
 add_library(${PROJECT_NAME} ${SRC_LIST} ${HDR_LIST})
 target_include_directories(${PROJECT_NAME} INTERFACE "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>")
